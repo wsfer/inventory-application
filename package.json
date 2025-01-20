@@ -15,5 +15,8 @@
     "express-async-handler": "^1.2.0",
     "express-validator": "^7.2.1",
     "pg": "^8.13.1"
+  },
+  "devDependencies": {
+    "prettier": "3.4.2"
   }
 }
