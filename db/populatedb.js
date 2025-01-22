@@ -14,18 +14,21 @@ const SQL = `
     image_link VARCHAR(300) NOT NULL,
     steam_link VARCHAR(100),
     gog_link VARCHAR(100),
-    other_link VARCHAR(100)
+    other_link VARCHAR(100),
+    created_at TIMESTAMP DEFAULT NOW()
   );
 
   CREATE TABLE IF NOT EXISTS genre (
     id INTEGER PRIMARY KEY GENERATED ALWAYS AS IDENTITY,
-    name VARCHAR(20) NOT NULL
+    name VARCHAR(20) NOT NULL,
+    created_at TIMESTAMP DEFAULT NOW()
   );
 
   CREATE TABLE IF NOT EXISTS game_genre (
     id INTEGER PRIMARY KEY GENERATED ALWAYS AS IDENTITY,
     game_id INTEGER REFERENCES game(id) ON DELETE CASCADE,
-    genre_id INTEGER REFERENCES genre(id) ON DELETE CASCADE
+    genre_id INTEGER REFERENCES genre(id) ON DELETE CASCADE,
+    created_at TIMESTAMP DEFAULT NOW()
   );
 
   INSERT INTO genre (name)
