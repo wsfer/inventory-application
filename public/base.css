@@ -55,3 +55,59 @@ body {
     sans-serif;
   margin: 0;
 }
+
+.wrapper {
+  margin: 0 auto;
+  max-width: 1800px;
+  width: 80%;
+}
+
+.header {
+  background-color: var(--orange-400);
+  color: var(--neutral-800);
+}
+
+.header__content {
+  align-items: center;
+  display: flex;
+}
+
+.header__logo {
+  font-size: var(--text-xl);
+  font-weight: bold;
+  text-decoration: none;
+
+  > span:first-child {
+    color: var(--neutral-50);
+  }
+
+  > span:last-child {
+    color: var(--neutral-800);
+  }
+
+  &:hover,
+  &:focus {
+    opacity: 0.85;
+  }
+}
+
+.header__navbar {
+  flex: 1;
+
+  ul {
+    display: flex;
+    gap: 1rem;
+    justify-content: end;
+    list-style: none;
+  }
+
+  a {
+    color: var(--neutral-900);
+    text-decoration: none;
+
+    &:hover,
+    &:focus {
+      text-decoration: underline;
+    }
+  }
+}
