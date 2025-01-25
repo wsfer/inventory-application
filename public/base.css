@@ -111,3 +111,40 @@ body {
     }
   }
 }
+
+.footer {
+  background-color: var(--orange-400);
+  color: var(--neutral-800);
+}
+
+.footer__content {
+  padding: 0.5rem 0;
+}
+
+.footer__text {
+  color: var(--neutral-900);
+  font-size: var(--text-normal);
+  text-align: center;
+}
+
+.footer__navbar {
+  ul {
+    display: flex;
+    gap: 1rem;
+    justify-content: center;
+    list-style: none;
+  }
+
+  svg {
+    width: var(--text-xl);
+  }
+
+  path {
+    fill: var(--neutral-900);
+  }
+
+  a:hover path,
+  a:focus path {
+    opacity: 0.85;
+  }
+}
