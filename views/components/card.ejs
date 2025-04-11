@@ -1,0 +1,14 @@
+<article class="card">
+    <img class="card-image" src=<%= game.image_link %> alt=<%= game.title %>>
+    <div class="card-texts">
+        <h2 class="card-title"><%= game.title %></h2>
+        <ul class="genre-list">
+            <% Object.entries(game.genre).map(([id, name]) => { %>
+                <li><a class="genre-link" href="/games?genre=<%= id %>"><%= name %></a></li>
+            <% }) %>
+        </ul>
+        <p class="card-description"><%= game.description %></p>
+        <p class="card-developer">Developer: <%= game.developer %></p>
+        <a class="card-link" href="/games/<%= game.id %>"><span class="sr-only">View more</span></a>
+    </div>
+</article>
