@@ -4,7 +4,9 @@ const genreQueries = require("../db/genreQueries");
 
 const getAll = asyncHandler(async (req, res) => {
   const games = await gameQueries.getAll();
-  res.render("home", { games: games });
+  const genres = await genreQueries.getAll();
+
+  res.render("gamelist", { games: games, genres: genres });
 });
 
 module.exports = { getAll };
