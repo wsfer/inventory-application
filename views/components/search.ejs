@@ -1,0 +1,16 @@
+<form action="/games" method="get">
+    <label>
+        <span class="sr-only">Name</span>
+        <input type="text" name="name" placeholder="Game name">
+    </label>
+    <label>
+        <span class="sr-only">Genre</span>
+        <select name="genre">
+            <option value="" disabled selected>-- Genre --</option>
+            <% genres.forEach(({id, name}) => { %>
+                <option value=<%= name %>><%= name %></option>
+            <% }) %>
+        </select>
+    </label>
+    <button type="submit">Search</button>
+</form>
