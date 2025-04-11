@@ -1,16 +1,18 @@
-<form action="/games" method="get">
-    <label>
-        <span class="sr-only">Name</span>
-        <input type="text" name="name" placeholder="Game name">
-    </label>
-    <label>
-        <span class="sr-only">Genre</span>
-        <select name="genre">
-            <option value="" disabled selected>-- Genre --</option>
-            <% genres.forEach(({id, name}) => { %>
-                <option value=<%= name %>><%= name %></option>
-            <% }) %>
-        </select>
-    </label>
-    <button type="submit">Search</button>
+<form class="search" action="/games" method="get">
+    <div class="wrapper">
+        <div class="search-container">
+            <label for="name" class="sr-only">Name</label>
+            <input type="text" id="name" name="name" placeholder="Game name">
+    
+            <label for="genre" class="sr-only">Genre</label>
+            <select id="genre" name="genre">
+                <option value="" disabled selected>-- Genre --</option>
+                <% genres.forEach(({id, name}) => { %>
+                    <option value=<%= name %>><%= name %></option>
+                <% }) %>
+            </select>
+            
+            <button type="submit">Search</button>
+        </div>
+    </div>
 </form>

@@ -1,0 +1,54 @@
+main {
+  background-color: var(--neutral-200);
+  padding: 2rem 0;
+}
+
+h1 {
+  color: var(--neutral-900);
+  font-size: var(--text-xl);
+  margin: 0;
+}
+
+ul {
+  list-style: none;
+  padding: 0;
+}
+
+.search {
+  background-color: var(--orange-300);
+  padding: 0.5rem 0;
+
+  input,
+  select {
+    background-color: var(--neutral-200);
+    border: none;
+    padding: 0.5em 1em;
+  }
+
+  input {
+    border-radius: 1em 0 0 1em;
+    flex: 3;
+  }
+
+  select {
+    flex: 1;
+  }
+
+  button {
+    background-color: var(--orange-400);
+    border: none;
+    border-radius: 0 1em 1em 0;
+    padding: 0.5em 1em;
+
+    &:hover,
+    &:focus {
+      background-color: var(--orange-200);
+      cursor: pointer;
+    }
+  }
+
+  .search-container {
+    display: flex;
+    gap: 0.2em;
+  }
+}
