@@ -1,0 +1,94 @@
+main {
+  background-color: var(--neutral-200);
+  padding: 2rem 0;
+}
+
+h1 {
+  color: var(--neutral-900);
+  font-size: var(--text-xl);
+  margin: 0;
+}
+
+ul {
+  list-style: none;
+  padding: 0;
+}
+
+.card {
+  background-color: var(--orange-200);
+  display: flex;
+  gap: 1rem;
+  position: relative;
+
+  &:has(.card-link:hover) {
+    outline: 0.25rem solid var(--orange-400);
+  }
+
+  .card-image {
+    max-width: 40%;
+    object-fit: cover;
+  }
+
+  .card-texts {
+    padding: 0.5rem;
+  }
+
+  .card-title {
+    color: var(--neutral-900);
+    font-size: var(--text-normal);
+    margin: 0;
+    margin-bottom: 0.5rem;
+  }
+
+  .genre-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.25rem;
+    margin-bottom: 0.5rem;
+
+    > li {
+      margin-top: 0.25rem;
+    }
+  }
+
+  .genre-link {
+    background-color: var(--orange-300);
+    color: var(--neutral-900);
+    font-size: var(--text-sm);
+    padding: 0.25rem 0.5rem;
+    position: relative;
+    text-decoration: none;
+    z-index: 1;
+
+    &:hover,
+    &:focus {
+      background-color: var(--orange-400);
+    }
+  }
+
+  .card-description {
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 5;
+    color: var(--neutral-800);
+    display: -webkit-box;
+    font-size: var(--text-sm);
+    line-clamp: 5;
+    line-height: 1rem;
+    max-height: 5rem;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
+  .card-developer {
+    color: var(--neutral-800);
+    font-size: var(--text-xs);
+  }
+
+  .card-link {
+    bottom: 0;
+    left: 0;
+    position: absolute;
+    right: 0;
+    top: 0;
+  }
+}
