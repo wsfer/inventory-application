@@ -3,6 +3,6 @@ const gameController = require("../controllers/gameController");
 
 const gameRouter = Router();
 
-gameRouter.get("/", gameController.getAll);
+gameRouter.get("/", gameController.getGamelist);
 
 module.exports = gameRouter;
