@@ -21,4 +21,18 @@ async function getRecent() {
   return rows;
 }
 
-module.exports = { getAll, getRecent };
+async function getById(id) {
+  const { rows } = await pool.query(
+    `
+    SELECT game.*, json_object_agg(genre.id, genre.name) AS genre FROM game
+    JOIN game_genre ON game.id = game_genre.game_id
+    JOIN genre ON genre_id = game_genre.genre_id
+    WHERE game.id = ($1)
+    GROUP BY game.id;
+  `,
+    [id],
+  );
+  return rows[0];
+}
+
+module.exports = { getAll, getRecent, getById };
