@@ -2,9 +2,10 @@ const asyncHandler = require("express-async-handler");
 const gameQueries = require("../db/gameQueries");
 const genreQueries = require("../db/genreQueries");
 
-const getAll = asyncHandler(async (req, res) => {
-  const games = await gameQueries.getAll();
-  res.render("home", { games: games });
+const getHomepage = asyncHandler(async (req, res) => {
+  const games = await gameQueries.getRecent();
+
+  res.render("homepage", { games: games });
 });
 
-module.exports = { getAll };
+module.exports = { getHomepage };

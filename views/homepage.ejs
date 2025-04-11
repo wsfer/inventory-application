@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nice Games | Homepage</title>
+    <link rel="stylesheet" href="base.css">
+    <link rel="stylesheet" href="homepage.css">
+</head>
+<body>
+    <%- include('components/header') %>
+    <main>
+        <div class="wrapper">
+            <h1>Recent games</h1>
+            <ul>
+                <% games.forEach((game) => { %>
+                    <li><%- include('components/card', { game: game }) %></li>
+                <% }) %>
+            </ul>
+        </div>
+    </main>
+    <%- include('components/footer') %>
+</body>
+</html>
