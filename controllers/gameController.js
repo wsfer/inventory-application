@@ -9,4 +9,11 @@ const getGamelist = asyncHandler(async (req, res) => {
   res.render("gamelist", { games: games, genres: genres });
 });
 
-module.exports = { getGamelist };
+const getGame = asyncHandler(async (req, res) => {
+  const { id } = req.params;
+  const game = await gameQueries.getById(id);
+
+  res.render("game", { game: game });
+});
+
+module.exports = { getGamelist, getGame };
