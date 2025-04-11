@@ -56,6 +56,11 @@ body {
   margin: 0;
 }
 
+.sr-only {
+  position: absolute;
+  left: -9999px;
+}
+
 .wrapper {
   margin: 0 auto;
   max-width: 1800px;
