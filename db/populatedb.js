@@ -11,6 +11,7 @@ const SQL = `
     id INTEGER PRIMARY KEY GENERATED ALWAYS AS IDENTITY,
     title VARCHAR(50) NOT NULL,
     description VARCHAR(700) NOT NULL,
+    developer VARCHAR(50) NOT NULL,
     image_link VARCHAR(300) NOT NULL,
     steam_link VARCHAR(100),
     gog_link VARCHAR(100),
@@ -34,10 +35,11 @@ const SQL = `
   INSERT INTO genre (name)
     VALUES ('Action'), ('Adventure'), ('Puzzle'), ('Strategy'), ('Survival'), ('Sandbox');
 
-  INSERT INTO game (title, description, image_link, steam_link, gog_link, other_link)
+  INSERT INTO game (title, description, developer, image_link, steam_link, gog_link, other_link)
     VALUES (
       'Terraria',
       'Dig, Fight, Explore, Build: The very world is at your fingertips as you fight for survival, fortune, and glory. Will you delve deep into cavernous expanses in search of treasure and raw materials with which to craft ever-evolving gear, machinery, and aesthetics? Perhaps you will choose instead to seek out ever-greater foes to test your mettle in combat? Maybe you will decide to construct your own city to house the host of mysterious allies you may encounter along your travels?',
+      'Re-Logic',
       'https://assets.nintendo.com/image/upload/q_auto:best/f_auto/dpr_2.0/ncom/software/switch/70010000001702/dac3a26570b5ca1ddf703bf0add7cc7c527f71a2b56521baf69e20c7a573c610',
       'https://store.steampowered.com/app/105600/Terraria/',
       'https://www.gog.com/en/game/terraria',
