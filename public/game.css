@@ -1,0 +1,104 @@
+main {
+  background-color: var(--neutral-200);
+  padding: 2rem 0;
+}
+
+.game {
+  background-color: var(--orange-200);
+  display: grid;
+  gap: 1rem;
+  grid-template-areas:
+    "title       ."
+    "genres      image"
+    "description image"
+    "developer   links";
+  grid-template-columns: 2fr 3fr;
+  grid-template-rows: auto auto 1fr auto;
+  padding: 2rem;
+}
+
+@media (max-width: 900px) {
+  .game {
+    display: block;
+  }
+
+  .links {
+    justify-content: left;
+  }
+}
+
+.title {
+  color: var(--neutral-900);
+  font-size: var(--text-lg);
+  grid-area: title;
+  margin: 0;
+}
+
+.genre-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.25rem;
+  grid-area: genres;
+  list-style: none;
+  margin-bottom: 0.5rem;
+  padding: 0;
+
+  > li {
+    margin-top: 0.25rem;
+  }
+}
+
+.genre-link {
+  background-color: var(--orange-300);
+  color: var(--neutral-900);
+  font-size: var(--text-sm);
+  padding: 0.25rem 0.5rem;
+  position: relative;
+  text-decoration: none;
+  z-index: 1;
+
+  &:hover,
+  &:focus {
+    background-color: var(--orange-400);
+  }
+}
+
+.description {
+  color: var(--neutral-800);
+  font-size: var(--text-normal);
+  grid-area: description;
+}
+
+.developer {
+  color: var(--neutral-800);
+  font-size: var(--text-xs);
+  grid-area: developer;
+
+  > span {
+    color: var(--neutral-900);
+  }
+}
+
+.image {
+  grid-area: image;
+  max-width: 100%;
+}
+
+.links {
+  align-items: start;
+  display: flex;
+  gap: 0.5rem;
+  grid-area: links;
+  justify-content: right;
+}
+
+.link {
+  > svg {
+    width: 2rem;
+  }
+
+  &:hover > svg,
+  &:focus > svg {
+    opacity: 0.7;
+  }
+}
