@@ -1,0 +1,10 @@
+main {
+  background-color: var(--neutral-200);
+  padding: 2rem 0;
+}
+
+h1 {
+  color: var(--neutral-900);
+  font-size: 20rem;
+  margin: 0;
+}
