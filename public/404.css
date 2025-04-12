@@ -3,8 +3,31 @@ main {
   padding: 2rem 0;
 }
 
-h1 {
+.title {
   color: var(--neutral-900);
   font-size: 20rem;
   margin: 0;
+  text-align: center;
+}
+
+.message {
+  color: var(--neutral-800);
+  font-size: var(--text-lg);
+  text-align: center;
+}
+
+.link {
+  background-color: var(--orange-300);
+  color: var(--neutral-900);
+  display: block;
+  font-size: var(--text-normal);
+  margin: 0 auto;
+  padding: 0.5em 1em;
+  text-decoration: none;
+  width: fit-content;
+
+  &:hover,
+  &:focus {
+    background-color: var(--orange-400);
+  }
 }
