@@ -4,5 +4,6 @@ const indexController = require("../controllers/indexController");
 const indexRouter = Router();
 
 indexRouter.get("/", indexController.getHomepage);
+indexRouter.get("*", indexController.getNotFoundPage);
 
 module.exports = indexRouter;
