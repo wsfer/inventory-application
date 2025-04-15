@@ -8,6 +8,7 @@ const PORT = process.env.port || 3000;
 
 app.set("view engine", "ejs");
 app.use(express.static("public"));
+app.use(express.urlencoded({ extends: true }));
 
 app.use("/games", gameRouter);
 app.use("/genre", genreRouter);
@@ -17,6 +18,7 @@ app.use((err, req, res, next) => {
   if (err.name === "NotFoundError") {
     res.render("404", { error: err });
   } else {
+    console.error(err);
     res.status(500).end();
   }
 });
