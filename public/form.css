@@ -1,0 +1,81 @@
+main {
+  background-color: var(--orange-200);
+  padding: 2rem 0;
+}
+
+h1 {
+  color: var(--neutral-900);
+  font-size: var(--text-xl);
+  margin: 0 0 1em;
+}
+
+.game-form {
+  display: grid;
+  gap: 1rem;
+  grid-template-columns: 1fr 1fr;
+}
+
+@media (max-width: 750px) {
+  .game-form {
+    display: flex;
+    flex-direction: column;
+  }
+}
+
+.input-wrapper {
+  &:not(:last-child) {
+    margin-bottom: 1rem;
+  }
+
+  > input,
+  > textarea {
+    background-color: var(--neutral-200);
+    border: none;
+    display: block;
+    margin: 0.5em 0;
+    padding: 0.5em 1em;
+    resize: none;
+    width: 100%;
+  }
+}
+
+.error {
+  color: rgb(174, 0, 0);
+  font-size: var(--text-sm);
+  margin: 0;
+}
+
+fieldset {
+  border: 1px solid var(--orange-400);
+  padding: 1rem;
+
+  > legend {
+    font-size: var(--text-normal);
+  }
+}
+
+.image {
+  max-width: 100%;
+  width: 100%;
+}
+
+.genres {
+  grid-column: span 2;
+  grid-row: 2;
+}
+
+.button {
+  background-color: var(--orange-300);
+  border: none;
+  color: var(--neutral-900);
+  cursor: pointer;
+  font-size: var(--text-normal);
+  grid-column: span 2;
+  grid-row: 3;
+  padding: 0.5em 1em;
+
+  &:hover,
+  &:focus {
+    background-color: var(--orange-400);
+  }
+}
