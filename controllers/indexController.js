@@ -12,4 +12,9 @@ const getNotFoundPage = asyncHandler(async (req, res) => {
   res.render("404", { error: error });
 });
 
-module.exports = { getHomepage, getNotFoundPage };
+const getGameForm = asyncHandler(async (req, res) => {
+  const genres = await genreQueries.getAll();
+  res.render("form", { genres: genres });
+});
+
+module.exports = { getHomepage, getNotFoundPage, getGameForm };
