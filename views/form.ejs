@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nice Games | Add game</title>
+    <link rel="stylesheet" href="/base.css">
+</head>
+<body>
+    <%- include('components/header') %>
+    <main>
+        <div class="wrapper">
+            <h1>Add a game</h1>
+            <form class="game-form" action="/games/create" method="post">
+                <fieldset>
+                    <legend>General informations</legend>
+
+                    <div class="input-wrapper">
+                        <label for="title">Title (required)</label>
+                        <input type="text" name="title" id="title" required>
+                        <% if (locals.errors?.title) { %>
+                            <p class="error"><%= locals.errors.title %></p>
+                        <% } %>
+                    </div>
+                    
+                    <div class="input-wrapper">
+                        <label for="description">Description (required)</label>
+                        <textarea name="description" id="description" required rows="5"></textarea>
+                        <% if (locals.errors?.description) { %>
+                            <p class="error"><%= locals.errors.description %></p>
+                        <% } %>
+                    </div>
+                    
+                    <div class="input-wrapper">
+                        <label for="developer">Developer (required)</label>
+                        <input type="text" name="developer" id="developer" required>
+                        <% if (locals.errors?.developer) { %>
+                            <p class="error"><%= locals.errors.developer %></p>
+                        <% } %>
+                    </div>
+                    
+                    <div class="input-wrapper">
+                        <label for="steam">Steam link</label>
+                        <input type="text" name="steam" id="steam">
+                        <% if (locals.errors?.steam) { %>
+                            <p class="error"><%= locals.errors.steam %></p>
+                        <% } %>
+                    </div>
+    
+                    <div class="input-wrapper">
+                        <label for="gog">Gog link</label>
+                        <input type="text" name="gog" id="gog">
+                        <% if (locals.errors?.gog) { %>
+                            <p class="error"><%= locals.errors.gog %></p>
+                        <% } %>
+                    </div>
+    
+                    <div class="input-wrapper">
+                        <label for="external">External link</label>
+                        <input type="text" name="external" id="external">
+                        <% if (locals.errors?.external) { %>
+                            <p class="error"><%= locals.errors.external %></p>
+                        <% } %>
+                    </div>
+                </fieldset>
+                
+                <fieldset>
+                    <legend>Image selection</legend>
+                    <div class="input-wrapper">
+                        <label for="image">Image link</label>
+                        <input type="text" name="image" id="image" class="js-image-input">
+                        <% if (locals.errors?.image) { %>
+                            <p class="error"><%= locals.errors.image %></p>
+                        <% } %>
+                        <img src="#" alt="Image preview" class="js-image image">
+                    </div>
+                </fieldset>
+
+                <fieldset class="genres">
+                    <legend>Genre selection</legend>
+
+                    <% if (locals.errors?.genres) { %>
+                        <p class="error"><%= locals.errors.genres %></p>
+                    <% } %>
+
+                    <% genres.forEach(({id, name}) => { %>
+                        <div>
+                            <input type="checkbox" name="genre" id=<%= id %> value=<%= id %>>
+                            <label for=<%= id %>><%= name %></label>
+                        </div>
+                    <% }) %>
+                </fieldset>
+                <button type="submit" class="button">Submit</button>
+            </form>
+        </div>
+    </main>
+    <%- include('components/footer') %>
+</body>
+</html>
