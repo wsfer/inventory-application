@@ -44,11 +44,9 @@ async function createGame(game) {
     WITH created_game AS (
       INSERT INTO game (title, description, developer, image_link, steam_link, gog_link, other_link)
         VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING id
-    ) INSERT INTO game_genre (game_id, genre_id) 
+    ) INSERT INTO game_genre (game_id, genre_id) VALUES 
   `.concat(
-      genres.map(
-        (genre, i) => `VALUES ((SELECT id FROM created_game), ($${i + 8}))`,
-      ),
+      genres.map((genre, i) => `((SELECT id FROM created_game), ($${i + 8}))`),
     ),
     [title, description, developer, image, steam, gog, external, ...genres],
   );
