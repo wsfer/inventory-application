@@ -35,4 +35,23 @@ async function getById(id) {
   return rows[0];
 }
 
-module.exports = { getAll, getRecent, getById };
+async function createGame(game) {
+  const { title, description, developer, image, steam, gog, external } = game;
+  const genres = Array.isArray(game.genre) ? game.genre : [game.genre];
+
+  await pool.query(
+    `
+    WITH created_game AS (
+      INSERT INTO game (title, description, developer, image_link, steam_link, gog_link, other_link)
+        VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING id
+    ) INSERT INTO game_genre (game_id, genre_id) 
+  `.concat(
+      genres.map(
+        (genre, i) => `VALUES ((SELECT id FROM created_game), ($${i + 8}))`,
+      ),
+    ),
+    [title, description, developer, image, steam, gog, external, ...genres],
+  );
+}
+
+module.exports = { getAll, getRecent, getById, createGame };
