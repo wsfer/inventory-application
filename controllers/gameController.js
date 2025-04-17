@@ -21,4 +21,17 @@ const getGame = asyncHandler(async (req, res) => {
   }
 });
 
-module.exports = { getGamelist, getGame };
+const createGame = asyncHandler(async (req, res) => {
+  // TODO: validate inputs
+  const errors = false;
+
+  if (errors) {
+    const genres = await genreQueries.getAll();
+    return res.status(400).render("form", { genres: genres, errors: errors });
+  }
+
+  await gameQueries.createGame(req.body);
+  res.redirect("/");
+});
+
+module.exports = { getGamelist, getGame, createGame };
