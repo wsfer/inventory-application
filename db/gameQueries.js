@@ -4,7 +4,7 @@ async function getAll() {
   const { rows } = await pool.query(`
     SELECT game.*, json_object_agg(genre.id, genre.name) AS genre FROM game
     JOIN game_genre ON game.id = game_genre.game_id
-    JOIN genre ON genre_id = game_genre.genre_id
+    JOIN genre ON genre.id = game_genre.genre_id
     GROUP BY game.id;
   `);
   return rows;
@@ -15,7 +15,7 @@ async function getRecent() {
   const { rows } = await pool.query(`
     SELECT game.*, json_object_agg(genre.id, genre.name) AS genre FROM game
     JOIN game_genre ON game.id = game_genre.game_id
-    JOIN genre ON genre_id = game_genre.genre_id
+    JOIN genre ON genre.id = game_genre.genre_id
     GROUP BY game.id;
   `);
   return rows;
@@ -26,7 +26,7 @@ async function getById(id) {
     `
     SELECT game.*, json_object_agg(genre.id, genre.name) AS genre FROM game
     JOIN game_genre ON game.id = game_genre.game_id
-    JOIN genre ON genre_id = game_genre.genre_id
+    JOIN genre ON genre.id = game_genre.genre_id
     WHERE game.id = ($1)
     GROUP BY game.id;
   `,
