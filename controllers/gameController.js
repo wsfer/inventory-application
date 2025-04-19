@@ -12,10 +12,15 @@ const getGamelist = asyncHandler(async (req, res) => {
 
 const getGame = asyncHandler(async (req, res) => {
   const { id } = req.params;
-  const game = await gameQueries.getById(id);
 
-  if (game) {
-    res.render("game", { game: game });
+  if (Number.isInteger(Number(id))) {
+    const game = await gameQueries.getById(id);
+
+    if (game) {
+      res.render("game", { game: game });
+    } else {
+      throw new NotFoundError("Game not found");
+    }
   } else {
     throw new NotFoundError("Game not found");
   }
