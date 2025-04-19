@@ -172,11 +172,14 @@ body {
   }
 
   .card-image {
+    aspect-ratio: 3 / 2;
+    flex: 2;
+    height: 320px;
     max-width: 40%;
-    object-fit: cover;
   }
 
   .card-texts {
+    flex: 3;
     padding: 0.5rem;
   }
 
