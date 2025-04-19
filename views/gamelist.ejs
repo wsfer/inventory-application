@@ -13,7 +13,7 @@
     <main>
         <div class="wrapper">
             <h1>Game list</h1>
-            <ul>
+            <ul class="games">
                 <% games.forEach((game) => { %>
                     <li><%- include('components/card', { game: game }) %></li>
                 <% }) %>
