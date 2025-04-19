@@ -1,7 +1,6 @@
 const pool = require("./pool");
 
 async function getAll({ name, genre }) {
-  console.log(genre);
   let filter;
   let parameters;
 
@@ -19,7 +18,6 @@ async function getAll({ name, genre }) {
     parameters = [];
   }
 
-  console.log(filter);
   const { rows } = await pool.query(
     `
     SELECT game.*, json_object_agg(genre.id, genre.name) AS genre FROM game
