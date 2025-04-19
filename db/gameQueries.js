@@ -1,12 +1,35 @@
 const pool = require("./pool");
 
-async function getAll() {
-  const { rows } = await pool.query(`
+async function getAll({ name, genre }) {
+  console.log(genre);
+  let filter;
+  let parameters;
+
+  if (name && genre) {
+    filter = "WHERE LOWER(game.title) LIKE LOWER($1) AND genre.id = ($2)";
+    parameters = [`${name}%`, genre];
+  } else if (name) {
+    filter = "WHERE LOWER(game.title) LIKE LOWER($1)";
+    parameters = [`${name}%`];
+  } else if (genre) {
+    filter = "WHERE genre.id = ($1)";
+    parameters = [genre];
+  } else {
+    filter = "";
+    parameters = [];
+  }
+
+  console.log(filter);
+  const { rows } = await pool.query(
+    `
     SELECT game.*, json_object_agg(genre.id, genre.name) AS genre FROM game
     JOIN game_genre ON game.id = game_genre.game_id
     JOIN genre ON genre.id = game_genre.genre_id
+    ${filter}
     GROUP BY game.id;
-  `);
+  `,
+    parameters,
+  );
   return rows;
 }
 

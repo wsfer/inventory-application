@@ -4,7 +4,7 @@ const genreQueries = require("../db/genreQueries");
 const NotFoundError = require("../errors/NotFoundError");
 
 const getGamelist = asyncHandler(async (req, res) => {
-  const games = await gameQueries.getAll();
+  const games = await gameQueries.getAll(req.query);
   const genres = await genreQueries.getAll();
 
   res.render("gamelist", { games: games, genres: genres });
