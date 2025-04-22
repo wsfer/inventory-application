@@ -29,7 +29,6 @@ const getGame = asyncHandler(async (req, res) => {
 });
 
 // TODO: add https to image links without it
-// TODO: remove duplicate genres
 const createGame = [
   validateGame,
   asyncHandler(async (req, res) => {
@@ -51,6 +50,9 @@ const createGame = [
         .status(400)
         .render("form", { genres: genres, errors: errorObject });
     }
+
+    // This removes duplicate genres
+    req.body.genre = [...new Set(req.body.genre)];
 
     await gameQueries.createGame(req.body);
     res.redirect("/");
