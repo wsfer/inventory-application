@@ -39,18 +39,26 @@ h1 {
   }
 }
 
-.error {
-  color: rgb(174, 0, 0);
-  font-size: var(--text-sm);
-  margin: 0;
-}
-
 fieldset {
   border: 1px solid var(--orange-400);
   padding: 1rem;
 
   > legend {
     font-size: var(--text-normal);
+  }
+}
+
+.errors {
+  list-style-position: inside;
+  padding: 0;
+
+  &:has(li:only-child) {
+    list-style: none;
+  }
+
+  > li {
+    color: rgb(174, 0, 0);
+    font-size: var(--text-sm);
   }
 }
 

@@ -21,15 +21,23 @@
                         <label for="title">Title (required)</label>
                         <input type="text" name="title" id="title" required>
                         <% if (locals.errors?.title) { %>
-                            <p class="error"><%= locals.errors.title %></p>
+                            <ul class="errors">
+                                <% locals.errors.title.forEach((msg) => { %>
+                                    <li><%= msg %></li>
+                                <% }) %>
+                            </ul>
                         <% } %>
                     </div>
                     
                     <div class="input-wrapper">
                         <label for="description">Description (required)</label>
-                        <textarea name="description" id="description" required rows="5"></textarea>
+                        <textarea name="description" id="description" required rows="5" maxlength="700"></textarea>
                         <% if (locals.errors?.description) { %>
-                            <p class="error"><%= locals.errors.description %></p>
+                            <ul class="errors">
+                                <% locals.errors.description.forEach((msg) => { %>
+                                    <li><%= msg %></li>
+                                <% }) %>
+                            </ul>
                         <% } %>
                     </div>
                     
@@ -37,7 +45,11 @@
                         <label for="developer">Developer (required)</label>
                         <input type="text" name="developer" id="developer" required>
                         <% if (locals.errors?.developer) { %>
-                            <p class="error"><%= locals.errors.developer %></p>
+                            <ul class="errors">
+                                <% locals.errors.developer.forEach((msg) => { %>
+                                    <li><%= msg %></li>
+                                <% }) %>
+                            </ul>
                         <% } %>
                     </div>
                     
@@ -45,7 +57,11 @@
                         <label for="steam">Steam link</label>
                         <input type="text" name="steam" id="steam">
                         <% if (locals.errors?.steam) { %>
-                            <p class="error"><%= locals.errors.steam %></p>
+                            <ul class="errors">
+                                <% locals.errors.steam.forEach((msg) => { %>
+                                    <li><%= msg %></li>
+                                <% }) %>
+                            </ul>
                         <% } %>
                     </div>
     
@@ -53,7 +69,11 @@
                         <label for="gog">Gog link</label>
                         <input type="text" name="gog" id="gog">
                         <% if (locals.errors?.gog) { %>
-                            <p class="error"><%= locals.errors.gog %></p>
+                            <ul class="errors">
+                                <% locals.errors.gog.forEach((msg) => { %>
+                                    <li><%= msg %></li>
+                                <% }) %>
+                            </ul>
                         <% } %>
                     </div>
     
@@ -61,7 +81,11 @@
                         <label for="external">External link</label>
                         <input type="text" name="external" id="external">
                         <% if (locals.errors?.external) { %>
-                            <p class="error"><%= locals.errors.external %></p>
+                            <ul class="errors">
+                                <% locals.errors.external.forEach((msg) => { %>
+                                    <li><%= msg %></li>
+                                <% }) %>
+                            </ul>
                         <% } %>
                     </div>
                 </fieldset>
@@ -72,7 +96,11 @@
                         <label for="image">Image link</label>
                         <input type="text" name="image" id="image" class="js-image-input">
                         <% if (locals.errors?.image) { %>
-                            <p class="error"><%= locals.errors.image %></p>
+                            <ul class="errors">
+                                <% locals.errors.image.forEach((msg) => { %>
+                                    <li><%= msg %></li>
+                                <% }) %>
+                            </ul>
                         <% } %>
                         <img src="/placeholder-image.jpg" alt="Image preview" class="js-image image">
                     </div>
@@ -81,8 +109,12 @@
                 <fieldset class="genres">
                     <legend>Genre selection</legend>
 
-                    <% if (locals.errors?.genres) { %>
-                        <p class="error"><%= locals.errors.genres %></p>
+                    <% if (locals.errors?.genre) { %>
+                        <ul class="errors">
+                            <% locals.errors.genre.forEach((msg) => { %>
+                                <li><%= msg %></li>
+                            <% }) %>
+                        </ul>
                     <% } %>
 
                     <% genres.forEach(({id, name}) => { %>
