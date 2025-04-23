@@ -70,6 +70,25 @@ fieldset {
 .genres {
   grid-column: span 2;
   grid-row: 2;
+  position: relative;
+}
+
+.genre-link {
+  background-color: var(--orange-300);
+  border-radius: 0.3em;
+  color: var(--neutral-900);
+  cursor: pointer;
+  font-size: var(--text-sm);
+  padding: 0.3em;
+  position: absolute;
+  right: 20px;
+  text-decoration: none;
+  top: calc(-0.5em - 1rem);
+
+  &:hover,
+  &:focus {
+    background-color: var(--orange-400);
+  }
 }
 
 .button {

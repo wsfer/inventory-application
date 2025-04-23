@@ -107,6 +107,8 @@
                 <fieldset class="genres">
                     <legend>Genre selection</legend>
 
+                    <a href="/genre/create" class="genre-link">Create a genre</a>
+
                     <% if (locals.errors?.genre) { %>
                         <ul class="errors">
                             <% locals.errors.genre.forEach((msg) => { %>
