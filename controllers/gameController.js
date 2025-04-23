@@ -28,7 +28,7 @@ const getGame = asyncHandler(async (req, res) => {
   }
 });
 
-// TODO: add https to image links without it
+// TODO: check if an image links works by making a http request to HEAD
 const createGame = [
   validateGame,
   asyncHandler(async (req, res) => {
