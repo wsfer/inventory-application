@@ -95,13 +95,11 @@
                     <div class="input-wrapper">
                         <label for="image">Image link</label>
                         <input type="text" name="image" id="image" class="js-image-input">
-                        <% if (locals.errors?.image) { %>
-                            <ul class="errors">
-                                <% locals.errors.image.forEach((msg) => { %>
-                                    <li><%= msg %></li>
-                                <% }) %>
-                            </ul>
-                        <% } %>
+                        <ul class="errors js-image-errors">
+                            <% locals.errors?.image.forEach((msg) => { %>
+                                <li><%= msg %></li>
+                            <% }) %>
+                        </ul>
                         <img src="/placeholder-image.jpg" alt="Image preview" class="js-image image">
                     </div>
                 </fieldset>
