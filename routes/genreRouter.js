@@ -3,6 +3,7 @@ const genreController = require("../controllers/genreController");
 
 const genreRouter = Router();
 
-genreRouter.get("/", genreController.getAll);
+genreRouter.get("/create", genreController.getGenreForm);
+genreRouter.post("/create", genreController.createGenre);
 
 module.exports = genreRouter;

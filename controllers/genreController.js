@@ -1,9 +1,13 @@
 const asyncHandler = require("express-async-handler");
 const genreQueries = require("../db/genreQueries");
 
-const getAll = asyncHandler(async (req, res) => {
+const getGenreForm = asyncHandler(async (req, res) => {
   const genres = await genreQueries.getAll();
-  res.json(genres);
+  res.render("genre");
 });
 
-module.exports = { getAll };
+const createGenre = asyncHandler(async (req, res) => {
+  res.redirect("/create");
+});
+
+module.exports = { getGenreForm, createGenre };
