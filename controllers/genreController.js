@@ -22,6 +22,7 @@ const createGenre = [
         .render("genre", { genres: genres, error: errorMessage });
     }
 
+    await genreQueries.createGenre(req.body.genre);
     res.redirect("/create");
   }),
 ];
