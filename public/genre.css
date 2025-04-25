@@ -1,0 +1,43 @@
+main {
+  background-color: var(--orange-200);
+  padding: 2rem 0;
+}
+
+h1 {
+  color: var(--neutral-900);
+  font-size: var(--text-xl);
+  margin: 0 0 1em;
+}
+
+.input-wrapper {
+  > input {
+    background-color: var(--neutral-200);
+    border: none;
+    display: block;
+    margin: 0.5em 0;
+    max-width: 500px;
+    padding: 0.5em 1em;
+    width: 100%;
+  }
+}
+
+.error {
+  color: rgb(174, 0, 0);
+  font-size: var(--text-sm);
+}
+
+.button {
+  background-color: var(--orange-300);
+  border: none;
+  color: var(--neutral-900);
+  cursor: pointer;
+  font-size: var(--text-normal);
+  grid-column: span 2;
+  grid-row: 3;
+  padding: 0.5em 1em;
+
+  &:hover,
+  &:focus {
+    background-color: var(--orange-400);
+  }
+}

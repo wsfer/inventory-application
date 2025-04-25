@@ -6,19 +6,21 @@
     <title>Document</title>
     <title>Nice Games | Add genre</title>
     <link rel="stylesheet" href="/base.css">
+    <link rel="stylesheet" href="/genre.css">
 </head>
 <body>
     <%- include('components/header') %>
     <main>
         <div class="wrapper">
-            <h1>Add a game</h1>
+            <h1>Add a genre</h1>
             <form action="/genre/create" method="post">
                 <div class="input-wrapper">
                     <label for="genre">Genre</label>
-                    <input type="text" name="title" id="title" required>
-                    <p class="error js-error"></p>
+                    <input type="text" name="genre" id="genre" required maxlength="20">
+                    <p class="error"><%= locals.error %></p>
                 </div>
-                <button type="submit">Submit</button>
+                <button class="button" type="submit">Submit</button>
+                <button class="button" type="button">Show genres</button>
             </form>
         </div>
     </main>
