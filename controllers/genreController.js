@@ -8,21 +8,26 @@ const getGenreForm = asyncHandler(async (req, res) => {
   res.render("genre", { genres: genres });
 });
 
-// TODO: check if genre name already exists
 const createGenre = [
   validateGenre,
   asyncHandler(async (req, res) => {
+    const genreName = req.body.genre;
     const errors = validationResult(req);
-    const genres = await genreQueries.getAll();
+    const existingGenres = await genreQueries.getByName(genreName);
 
-    if (!errors.isEmpty()) {
-      const errorMessage = errors.array()[0].msg;
+    if (!errors.isEmpty() || existingGenres.length > 0) {
+      const genres = await genreQueries.getAll();
+      const errorMessage =
+        existingGenres.length > 0
+          ? "Genre already exists"
+          : errors.array()[0].msg;
+
       return res
         .status(400)
         .render("genre", { genres: genres, error: errorMessage });
     }
 
-    await genreQueries.createGenre(req.body.genre);
+    await genreQueries.createGenre(genreName);
     res.redirect("/create");
   }),
 ];
