@@ -3,10 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
     <title>Nice Games | Add genre</title>
     <link rel="stylesheet" href="/base.css">
     <link rel="stylesheet" href="/genre.css">
+    <script src="/genre.js" defer></script>
 </head>
 <body>
     <%- include('components/header') %>
@@ -20,9 +20,20 @@
                     <p class="error"><%= locals.error %></p>
                 </div>
                 <button class="button" type="submit">Submit</button>
-                <button class="button" type="button">Show genres</button>
+                <button class="button js-show-modal-btn" type="button">Show genres</button>
             </form>
         </div>
+        <dialog class="modal js-modal">
+            <h2>Created genres</h2>
+            <ul>
+                <% genres.forEach((genre) => { %>
+                    <li><%= genre.name %></li>
+                <% }) %>
+            </ul>
+            <form method="dialog">
+                <button class="button">Close</button>
+            </form>
+        </dialog>
     </main>
     <%- include('components/footer') %>
 </body>
