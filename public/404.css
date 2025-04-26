@@ -17,6 +17,7 @@ main {
 }
 
 .link {
+  display: block;
   margin: 0 auto;
   text-decoration: none;
   width: fit-content;
