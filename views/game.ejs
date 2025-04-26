@@ -11,7 +11,7 @@
     <%- include('components/header') %>
     <main>
         <div class="wrapper">
-            <div class="game">
+            <section class="game">
                 <h1 class="title"><%= game.title %></h1>
                 <ul class="genre-list">
                     <% Object.entries(game.genre).map(([id, name]) => { %>
@@ -40,9 +40,27 @@
                             <span class="sr-only">Other</span>
                         </a>
                     <% } %>
+                    <button class="delete-btn js-delete-btn">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><title>delete</title><path d="M19,4H15.5L14.5,3H9.5L8.5,4H5V6H19M6,19A2,2 0 0,0 8,21H16A2,2 0 0,0 18,19V7H6V19Z" /></svg>
+                        <span class="sr-only">Delete game</span>
+                    </button>
                 </div>
-            </div>
+            </section>
+            <section class="delete-form js-delete-form">
+                <h2>Delete game</h2>
+                <form method="post" action=<%= `/games/delete/${game.id}` %>>
+                    <div class="input-wrapper">
+                        <label for="password">Password</label>
+                        <input type="password" id="password" name="password" placeholder="Super secret password">
+                    </div>
+                    <button class="button" type="submit">Confirm</button>
+                    <button class="button" type="button">Cancel</button>
+                </form>
+            </section>
         </div>
+        <dialog>
+            
+        </dialog>
     </main>
     <%- include('components/footer') %>
 </body>
