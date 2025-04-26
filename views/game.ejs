@@ -6,6 +6,7 @@
     <title>Nice Games | <%= game.title %></title>
     <link rel="stylesheet" href="/styles/base.css">
     <link rel="stylesheet" href="/styles/game.css">
+    <script src="/scripts/game.js" defer></script>
 </head>
 <body>
     <%- include('components/header') %>
@@ -51,10 +52,10 @@
                 <form method="post" action=<%= `/games/delete/${game.id}` %>>
                     <div class="input-wrapper">
                         <label for="password">Password</label>
-                        <input type="password" id="password" name="password" placeholder="Super secret password">
+                        <input type="password" id="password" name="password" placeholder="Super secret password" class="js-password">
                     </div>
                     <button class="button" type="submit">Confirm</button>
-                    <button class="button" type="button">Cancel</button>
+                    <button class="button js-delete-cancel" type="button">Cancel</button>
                 </form>
             </section>
         </div>
