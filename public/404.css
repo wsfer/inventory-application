@@ -17,17 +17,7 @@ main {
 }
 
 .link {
-  background-color: var(--orange-300);
-  color: var(--neutral-900);
-  display: block;
-  font-size: var(--text-normal);
   margin: 0 auto;
-  padding: 0.5em 1em;
   text-decoration: none;
   width: fit-content;
-
-  &:hover,
-  &:focus {
-    background-color: var(--orange-400);
-  }
 }

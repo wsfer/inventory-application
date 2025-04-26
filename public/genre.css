@@ -42,19 +42,3 @@ h1 {
     padding: 0;
   }
 }
-
-.button {
-  background-color: var(--orange-300);
-  border: none;
-  color: var(--neutral-900);
-  cursor: pointer;
-  font-size: var(--text-normal);
-  grid-column: span 2;
-  grid-row: 3;
-  padding: 0.5em 1em;
-
-  &:hover,
-  &:focus {
-    background-color: var(--orange-400);
-  }
-}
