@@ -139,3 +139,8 @@ main {
     width: 800px;
   }
 }
+
+.error {
+  color: rgb(174, 0, 0);
+  font-size: var(--text-sm);
+}

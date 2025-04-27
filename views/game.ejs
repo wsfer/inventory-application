@@ -47,21 +47,30 @@
                     </button>
                 </div>
             </section>
-            <section class="delete-form js-delete-form">
+
+            <% const deleteFormClasses = ["delete-form", "js-delete-form"]; %>
+            <% if (locals.formOpen) deleteFormClasses.push("open") %>
+
+            <section class="<%= deleteFormClasses.join(" ") %>">
                 <h2>Delete game</h2>
                 <form method="post" action=<%= `/games/delete/${game.id}` %>>
                     <div class="input-wrapper">
                         <label for="password">Password</label>
-                        <input type="password" id="password" name="password" placeholder="Super secret password" class="js-password">
+                        <input
+                            type="password"
+                            id="password"
+                            name="password"
+                            placeholder="Super secret password"
+                            class="js-password"
+                            required
+                        >
+                        <p class="error"><%= locals.error %></p>
                     </div>
                     <button class="button" type="submit">Confirm</button>
                     <button class="button js-delete-cancel" type="button">Cancel</button>
                 </form>
             </section>
         </div>
-        <dialog>
-            
-        </dialog>
     </main>
     <%- include('components/footer') %>
 </body>
