@@ -73,4 +73,6 @@ async function createGame(game) {
   );
 }
 
-module.exports = { getAll, getRecent, getById, createGame };
+async function deleteGame(id) {}
+
+module.exports = { getAll, getRecent, getById, createGame, deleteGame };

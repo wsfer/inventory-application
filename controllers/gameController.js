@@ -5,6 +5,8 @@ const genreQueries = require("../db/genreQueries");
 const NotFoundError = require("../errors/NotFoundError");
 const validateGame = require("../middlewares/validateGame");
 
+const { SECRET_PASSWORD } = process.env;
+
 const getGamelist = asyncHandler(async (req, res) => {
   const games = await gameQueries.getAll(req.query);
   const genres = await genreQueries.getAll();
@@ -59,4 +61,27 @@ const createGame = [
   }),
 ];
 
-module.exports = { getGamelist, getGame, createGame };
+const deleteGame = asyncHandler(async (req, res) => {
+  const { password } = req.body;
+  const { id } = req.params;
+
+  // This is not the best way to secure it, but this project is just for learning purposes
+  if (Number.isInteger(Number(id)) && password === SECRET_PASSWORD) {
+    await gameQueries.deleteGame(id);
+    res.redirect("/");
+  } else if (Number.isInteger(Number(id))) {
+    const game = await gameQueries.getById(id);
+
+    if (game) {
+      res.render("game", {
+        game: game,
+        formOpen: true,
+        error: "Wrong password",
+      });
+    } else {
+      throw new NotFoundError("Game not found");
+    }
+  }
+});
+
+module.exports = { getGamelist, getGame, createGame, deleteGame };
