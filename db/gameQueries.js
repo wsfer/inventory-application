@@ -73,6 +73,8 @@ async function createGame(game) {
   );
 }
 
-async function deleteGame(id) {}
+async function deleteGame(id) {
+  await pool.query("DELETE FROM game WHERE id = ($1)", [id]);
+}
 
 module.exports = { getAll, getRecent, getById, createGame, deleteGame };
