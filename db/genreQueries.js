@@ -29,6 +29,13 @@ async function createGenre(name) {
 
 async function deleteGenre(id) {
   await pool.query("DELETE FROM genre WHERE id = ($1)", [id]);
+
+  // This will clear games without genres.
+  // TODO: There should be a better way to do it...
+  await pool.query(`
+    DELETE FROM game
+    WHERE id NOT IN (SELECT game_id FROM game_genre);
+  `);
 }
 
 module.exports = { getAll, getById, getByName, createGenre, deleteGenre };
