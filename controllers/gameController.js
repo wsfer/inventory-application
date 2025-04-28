@@ -54,7 +54,11 @@ const createGame = [
     }
 
     // This removes duplicate genres
-    req.body.genre = [...new Set(req.body.genre)];
+    req.body.genre = [
+      ...new Set(
+        Array.isArray(req.body.genre) ? req.body.genre : [req.body.genre],
+      ),
+    ];
 
     await gameQueries.createGame(req.body);
     res.redirect("/");
