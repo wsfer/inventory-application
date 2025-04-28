@@ -26,7 +26,7 @@ const createGenre = [
 
       return res
         .status(400)
-        .render("genre", { genres: genres, error: errorMessage });
+        .render("genre", { genres: genres, genreError: errorMessage });
     }
 
     await genreQueries.createGenre(genreName);

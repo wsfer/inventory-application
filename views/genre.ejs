@@ -12,26 +12,54 @@
     <%- include('components/header') %>
     <main>
         <div class="wrapper">
-            <h1>Add a genre</h1>
-            <form action="/genre/create" method="post">
-                <div class="input-wrapper">
-                    <label for="genre">Genre</label>
-                    <input type="text" name="genre" id="genre" required maxlength="20">
-                    <p class="error"><%= locals.error %></p>
-                </div>
-                <button class="button" type="submit">Submit</button>
-                <button class="button js-show-modal-btn" type="button">Show genres</button>
-            </form>
+            <h1 class="title">Genres</h1>
+            <div class="flex">
+                <form action="/genre/create" method="post">
+                    <h2 class="subtitle">Add a genre</h2>
+                    <div class="input-wrapper">
+                        <label for="genre">Genre</label>
+                        <input type="text" name="genre" id="genre" required maxlength="20">
+                        <p class="error"><%= locals.genreError %></p>
+                    </div>
+                    <button class="button" type="submit">Submit</button>
+                </form>
+                <article>
+                    <h2 class="subtitle">All genres</h2>
+                    <p class="paragraph">Select a genre to delete</p>
+                    <ul class="genre-list js-genre-list">
+                        <% genres.forEach((genre) => { %>
+                            <li>
+                                <button class="js-genre" data-id=<%= genre.id %> data-name=<%= genre.name %>>
+                                    <%= genre.name %>
+                                </button>
+                            </li>
+                        <% }) %>
+                    </ul>
+                </article>
+            </div>
         </div>
-        <dialog class="modal js-modal">
-            <h2>Created genres</h2>
-            <ul>
-                <% genres.forEach((genre) => { %>
-                    <li><%= genre.name %></li>
-                <% }) %>
-            </ul>
-            <form method="dialog">
-                <button class="button">Close</button>
+        <dialog
+            class="modal js-modal"
+            data-open="<%= locals.modalStatus?.open %>"
+            data-id="<%= locals.modalStatus?.id %>"
+            data-name="<%= locals.modalStatus?.name %>"
+        >
+            <h2 class="subtitle">Delete genre "<span class="js-genre-name"></span>"</h2>
+            <form class="js-delete-form" action="#" method="post">
+                <div class="input-wrapper">
+                    <label for="password">Password</label>
+                    <input
+                        type="password"
+                        id="password"
+                        name="password"
+                        placeholder="Super secret password"
+                        class="js-password"
+                        required
+                    >
+                    <p class="error js-delete-error"><%= locals.deleteError %></p>
+                </div>
+                <button class="button" type="submit">Confirm</button>
+                <button class="button js-delete-cancel" type="button">Cancel</button>
             </form>
         </dialog>
     </main>

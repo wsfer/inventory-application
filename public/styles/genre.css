@@ -3,10 +3,30 @@ main {
   padding: 2rem 0;
 }
 
-h1 {
+.title {
   color: var(--neutral-900);
   font-size: var(--text-xl);
-  margin: 0 0 1em;
+}
+
+.subtitle {
+  color: var(--neutral-900);
+  font-size: var(--text-normal);
+}
+
+.paragraph {
+  color: var(--neutral-900);
+  font-size: var(--text-sm);
+}
+
+.flex {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+
+  > * {
+    flex: 1;
+    flex-basis: 500px;
+  }
 }
 
 .input-wrapper {
@@ -26,19 +46,32 @@ h1 {
   font-size: var(--text-sm);
 }
 
+.genre-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  list-style: none;
+  padding-left: 0;
+
+  button {
+    background-color: var(--orange-300);
+    border: none;
+    cursor: pointer;
+    padding: 0.25em 0.5em;
+
+    &:hover,
+    &:focus {
+      background-color: var(--orange-400);
+    }
+  }
+}
+
 .modal {
   background-color: var(--orange-200);
   border: none;
+  padding: 1.5rem;
 
-  > h2 {
-    color: var(--neutral-900);
-    font-size: var(--text-normal);
+  .subtitle {
     margin-top: 0;
-  }
-
-  > ul {
-    color: var(--neutral-900);
-    list-style-position: inside;
-    padding: 0;
   }
 }
