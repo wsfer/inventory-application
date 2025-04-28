@@ -3,6 +3,8 @@ const asyncHandler = require("express-async-handler");
 const genreQueries = require("../db/genreQueries");
 const validateGenre = require("../middlewares/validateGenre");
 
+const { SECRET_PASSWORD } = process.env;
+
 const getGenreForm = asyncHandler(async (req, res) => {
   const genres = await genreQueries.getAll();
   res.render("genre", { genres: genres });
@@ -32,4 +34,24 @@ const createGenre = [
   }),
 ];
 
-module.exports = { getGenreForm, createGenre };
+const deleteGenre = asyncHandler(async (req, res) => {
+  const { password } = req.body;
+  const { id } = req.params;
+  const targetGenre = (await genreQueries.getById(id))[0];
+
+  // This is not the best way to secure it, but this project is just for learning purposes
+  if (targetGenre && password === SECRET_PASSWORD) {
+    await genreQueries.deleteGenre(id);
+    res.redirect("/genre/create");
+  } else {
+    const genres = await genreQueries.getAll();
+
+    res.status(targetGenre ? 400 : 404).render("genre", {
+      genres: genres,
+      deleteError: targetGenre ? "Wrong password" : "Genre doesn't exist",
+      modalStatus: { open: true, id: id, name: targetGenre?.name },
+    });
+  }
+});
+
+module.exports = { getGenreForm, createGenre, deleteGenre };
