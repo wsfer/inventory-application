@@ -5,13 +5,23 @@ async function getAll({ name, genre }) {
   let parameters;
 
   if (name && genre) {
-    filter = "WHERE LOWER(game.title) LIKE LOWER($1) AND genre.id = ($2)";
+    filter = `
+      WHERE LOWER(game.title) LIKE LOWER($1) AND ($2) IN (
+        SELECT genre_id
+        FROM game_genre
+        WHERE game_genre.game_id = game.id
+      )`;
     parameters = [`${name}%`, genre];
   } else if (name) {
     filter = "WHERE LOWER(game.title) LIKE LOWER($1)";
     parameters = [`${name}%`];
   } else if (genre) {
-    filter = "WHERE genre.id = ($1)";
+    filter = `
+      WHERE ($1) IN (
+        SELECT genre_id
+        FROM game_genre
+        WHERE game_genre.game_id = game.id
+      )`;
     parameters = [genre];
   } else {
     filter = "";
