@@ -1,6 +1,6 @@
 # Inventory Application
 
-This is an inventory management app project which I built as part of [The Odin Project](https://www.theodinproject.com/) Node.js curriculum for learning purposes where users can add and see some games.
+This is an inventory management app project which I built as part of [The Odin Project](https://www.theodinproject.com/) Node.js curriculum for learning purposes where users can add and see some games. The project is hosted on render https://inventory-application-yk0z.onrender.com
 
 ## Technologies
 
